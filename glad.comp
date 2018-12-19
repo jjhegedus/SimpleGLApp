@@ -1,0 +1,12 @@
+INCS=C:/Projects/third-party/glad/include
+
+SRCS = \
+    C:/Projects/third-party/glad/src/glad.c \
+
+SRCS.win = \
+    C:/Projects/third-party/glad/src/glad_wgl.c
+
+SRCS.linux = \
+  C:/Projects/third-party/glad/src/glad_glx.c
+
+SHLIBS.linux=dl X11

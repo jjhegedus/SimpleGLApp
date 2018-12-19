@@ -1,0 +1,7 @@
+
+LIBPATHS=C:/Projects/third-party/glfw/lib-vc2015
+SHLIBS.win=glfw3dll
+SHLIBS.osx=glfw.3
+SHLIBS.default=glfw
+INCS=C:/Projects/third-party/glfw/include
+

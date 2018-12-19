@@ -1,0 +1,7 @@
+<manifest xmlns:ml="magicleap" ml:developer_id="3ce1d294-a5b5-498d-a89a-63841dd5d63a" ml:package="com.magicleap.sample.simpleglapp" ml:version_code="1" ml:version_name="1.0">
+	<application ml:min_api_level="1" ml:sdk_version="1.0" ml:visible_name="SimpleGlApp">
+                <uses-privilege ml:name="LowLatencyLightwear" />
+		<component ml:binary_name="bin/SimpleGlApp" ml:name=".fullscreen" ml:type="Fullscreen" ml:visible_name="SimpleGlApp">
+		</component>
+	</application>
+</manifest>

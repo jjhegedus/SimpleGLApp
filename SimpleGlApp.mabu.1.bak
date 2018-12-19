@@ -1,0 +1,24 @@
+KIND = program
+OPTIONS = \
+	exceptions/on \
+	standard-c++/11 \
+	warn/on
+
+SRCS = main.cpp
+USES = \
+	OpenGL \
+	ml_sdk \
+	stdc++
+
+DEFS.win = \
+	ML_WINDOWS \
+	USE_GLFW=1
+
+USES.win = \
+	glad \
+	glfw
+
+DEFS.lumin = \
+	ML_DEVICE \
+	USE_GLFW=0
+

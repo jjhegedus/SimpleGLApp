@@ -1,0 +1,85 @@
+{
+ "entries": [
+  {
+   "compression": 8,
+   "hash": "18690e9a5d3275edab1eab5115b6be04b38a5a05",
+   "pkgpath": "bin/SimpleGlApp",
+   "size": 84136,
+   "src": "C:/Projects/Samples/SimpleGlApp/.out/debug_lumin_clang-3.8_aarch64/SimpleGlApp",
+   "xfrm_flags": {
+    "signed": {
+     "cert": "C:/Projects/Git/22ndtech/admin/magic-leap-private-key/magic-leap-certificate-2018-10-27.cert"
+    },
+    "taildata": {
+     "debuggable": true,
+     "sbox": "USER",
+     "version": 3
+    }
+   },
+   "xfrm_hash": "262fe50b2a8c25213cb1b32ba65a7c310e92a5ed",
+   "xfrm_path": "C:/Projects/Samples/SimpleGlApp/.out/simple_gl_app/debug_lumin_clang-3.8_aarch64\\SimpleGlApp-ce35c66efc4efaa5",
+   "xfrm_size": 84894
+  },
+  {
+   "compression": 8,
+   "hash": "056f6138c3ee86a8838ab302f0e9e56fbcc6dca0",
+   "pkgpath": "fragment-shader.glsl",
+   "size": 85,
+   "src": "C:/Projects/Samples/SimpleGlApp/fragment-shader.glsl"
+  },
+  {
+   "compression": 8,
+   "hash": "493b934afba26d7281d373b712acfee3169a024b",
+   "pkgpath": "vertex-shader.glsl",
+   "size": 171,
+   "src": "C:/Projects/Samples/SimpleGlApp/vertex-shader.glsl"
+  },
+  {
+   "compression": 8,
+   "hash": "f220115a058b15a071640b9ae4b3c38ef6c5231d",
+   "pkgpath": "manifest.xml",
+   "size": 485,
+   "src": "C:/Projects/Samples/SimpleGlApp\\manifest.xml",
+   "xfrm_flags": {
+    "manifest": {
+     "cert_hash": "631505a6f6bb360aa24c2b1170c21ced50b6ebb8",
+     "developer_id": "3ce1d294-a5b5-498d-a89a-63841dd5d63a"
+    }
+   },
+   "xfrm_hash": "2923188e0aadfc2975326e7ed2eb21c6983b9c49",
+   "xfrm_path": "C:/Projects/Samples/SimpleGlApp/.out/simple_gl_app/debug_lumin_clang-3.8_aarch64\\manifest.xml-5b781b95c0a20465",
+   "xfrm_size": 495
+  },
+  {
+   "compression": 8,
+   "hash": "5925de9f4d7b83c65d1fd7b25ced5f0bf8c27e73",
+   "pkgpath": "bin/libc++_shared.so",
+   "size": 976832,
+   "src": "C:/Users/jeff/MagicLeap/mlsdk/v0.18.0/lumin/stl/libc++/lib/libc++_shared.so",
+   "xfrm_flags": {
+    "signed": {
+     "cert": "C:/Projects/Git/22ndtech/admin/magic-leap-private-key/magic-leap-certificate-2018-10-27.cert"
+    },
+    "taildata": {
+     "debuggable": true,
+     "sbox": "USER",
+     "version": 3
+    }
+   },
+   "xfrm_hash": "b67eb149ec0b7eeae2aff55851c0a6ef40c9f67f",
+   "xfrm_path": "C:/Projects/Samples/SimpleGlApp/.out/simple_gl_app/debug_lumin_clang-3.8_aarch64\\libc++_shared.so-21fbb67b9b550ae1",
+   "xfrm_size": 977590
+  }
+ ],
+ "pkgflags": {
+  "signed": {
+   "cert": "C:/Projects/Git/22ndtech/admin/magic-leap-private-key/magic-leap-certificate-2018-10-27.cert"
+  },
+  "taildata": {
+   "debuggable": true,
+   "devcert": "C:/Projects/Git/22ndtech/admin/magic-leap-private-key/magic-leap-certificate-2018-10-27.cert",
+   "sbox": "USER",
+   "version": 3
+  }
+ }
+}

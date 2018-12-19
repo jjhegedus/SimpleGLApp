@@ -1,0 +1,7 @@
+{
+	"label": "Simple GL Application",
+	"description": "This sample project demonstrates cross-platform OpenGL development in MLSDK",
+	"projectFile": "simple_gl_app.package",
+	"additionalFiles" : ["README.md"],
+	"initialFilesToOpen": ["main.cpp", "README.md"]
+}

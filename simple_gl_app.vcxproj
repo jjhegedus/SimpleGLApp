@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ML">
+      <Configuration>Debug</Configuration>
+      <Platform>ML</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ML">
+      <Configuration>Release</Configuration>
+      <Platform>ML</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <!-- Project global & default -->
+    <ProjectGuid>{7F0C5277-92A0-41CB-B659-067332A4B20E}</ProjectGuid>
+    <MLProjectFile>simple_gl_app.package</MLProjectFile>
+    <MLProjectKind>program</MLProjectKind>
+    <MLMfitExtraArgs>
+    </MLMfitExtraArgs>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectCapability Include="MLProject" />
+    <ProjectCapability Include="NoVCDefaultBuildUpToDateCheckProvider" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PlatformTargetsFound>True</PlatformTargetsFound>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ML'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ML'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <UseDefaultDebuggersPropertyPageSchemas>false</UseDefaultDebuggersPropertyPageSchemas>
+    <UseDefaultPropertyPageSchemas>false</UseDefaultPropertyPageSchemas>
+  </PropertyGroup>
+  <ItemGroup>
+    <PropertyPageSchema Include="$(VCTargetsPath)$(LangID)\ProjectItemsSchema.xml" />
+    <PropertyPageSchema Include="$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\general.xaml">
+      <Context>Project</Context>
+    </PropertyPageSchema>
+    <PropertyPageSchema Include="$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\build.xaml" />
+    <!-- Don't expose these to user any more as they are of little value to user... 04/11/17
+    <PropertyPageSchema Include="$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\intellisense.xaml" />
+    -->
+    <!--Only show this page if the project is to create a package. -->
+    <PropertyPageSchema Condition="$([System.String]::copy($(MLProjectFile)).ToLower().EndsWith('.package'))" Include="$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\package_signing.xaml" />
+    <PropertyPageSchema Include="$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\build_events.xml" />
+    <PropertyPageSchema Condition="'$(MLProjectKind)' == 'program'" Include="&#xA;                        $(VCTargetsPath)$(LangID)\debugger_general.xml;&#xA;                        $(VCTargetsPath)$(LangID)\debugger_local_windows.xml;&#xA;                        $(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\debugger.xaml" />
+    <!-- Property sheet only rules -->
+    <PropertyPageSchema Include="$(VCTargetsPath)$(LangID)\general_makefile_ps.xml;$(VCTargetsPath)$(LangID)\usermacros.xml">
+      <Context>PropertySheet</Context>
+    </PropertyPageSchema>
+    <!-- File only rules -->
+    <PropertyPageSchema Include="$(VCTargetsPath)$(LangID)\general_file.xml">
+      <Context>File</Context>
+    </PropertyPageSchema>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ML'">
+    <MLSDK>C:\Users\jeff\MagicLeap\mlsdk\v0.18.0</MLSDK>
+    <MLCertificateFile>
+    </MLCertificateFile>
+    <!--This should appear before <NMakeBuildCommandLine> -->
+    <MLExtraBuildOption>
+    </MLExtraBuildOption>
+    <MabuTargetFullSpec>debug_lumin_clang-3.8_aarch64</MabuTargetFullSpec>
+    <ExecutablePath>$(MLSDK);$(PATH)</ExecutablePath>
+    <IncludePath />
+    <ReferencePath>
+    </ReferencePath>
+    <LibraryPath>
+    </LibraryPath>
+    <NMakeBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_debug -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_debug -r -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_debug -c -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeCleanCommandLine>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>
+    </NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\ml_is.h</NMakeForcedIncludes>
+    <PackageFile>.out/simple_gl_app/simple_gl_app.mpk</PackageFile>
+    <IntDir>.out\debug_lumin_clang-3.8_aarch64</IntDir>
+    <OutDir>$(ProjectDir)\$(IntDir)</OutDir>
+    <NMakeOutput>$(IntDir)\SimpleGlApp</NMakeOutput>
+    <ELFFile>$(NMakeOutput)</ELFFile>
+    <DebuggerFlavor>MLDebugger</DebuggerFlavor>
+    <!-- following are defaults for debugger options -->
+    <Attach>false</Attach>
+    <EnableAutoStop>true</EnableAutoStop>
+    <AutoStopAtFunction>main</AutoStopAtFunction>
+    <EnablePrettyPrinting>true</EnablePrettyPrinting>
+    <MLDownloadOnStart>true</MLDownloadOnStart>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ML'">
+    <MLSDK>C:\Users\jeff\MagicLeap\mlsdk\v0.18.0</MLSDK>
+    <MLCertificateFile>
+    </MLCertificateFile>
+    <MLExtraBuildOption>
+    </MLExtraBuildOption>
+    <MabuTargetFullSpec>release_lumin_clang-3.8_aarch64</MabuTargetFullSpec>
+    <ExecutablePath>$(MLSDK);$(PATH)</ExecutablePath>
+    <IncludePath />
+    <ReferencePath>
+    </ReferencePath>
+    <LibraryPath>
+    </LibraryPath>
+    <NMakeBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_release -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_release -r -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t device_release -c -v --set-options=ide/visualstudio $(MLExtraBuildOption)</NMakeCleanCommandLine>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>
+    </NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(LOCALAPPDATA)\Microsoft\VisualStudio\MagicLeap\ml_is.h</NMakeForcedIncludes>
+    <PackageFile>.out/simple_gl_app/simple_gl_app.mpk</PackageFile>
+    <IntDir>.out\release_lumin_clang-3.8_aarch64</IntDir>
+    <OutDir>$(ProjectDir)\$(IntDir)</OutDir>
+    <NMakeOutput>$(IntDir)\SimpleGlApp</NMakeOutput>
+    <ELFFile>$(NMakeOutput)</ELFFile>
+    <DebuggerFlavor>MLDebugger</DebuggerFlavor>
+    <!-- following are defaults for debugger options -->
+    <Attach>false</Attach>
+    <EnableAutoStop>false</EnableAutoStop>
+    <AutoStopAtFunction>
+    </AutoStopAtFunction>
+    <EnablePrettyPrinting>true</EnablePrettyPrinting>
+    <MLDownloadOnStart>true</MLDownloadOnStart>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <MLSDK>C:\Users\jeff\MagicLeap\mlsdk\v0.18.0</MLSDK>
+    <MLCertificateFile>
+    </MLCertificateFile>
+    <MLExtraBuildOption>
+    </MLExtraBuildOption>
+    <MabuTargetFullSpec>debug_win_msvc-2017_x64</MabuTargetFullSpec>
+    <ExecutablePath>$(MLSDK);$(PATH)</ExecutablePath>
+    <NMakeBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_debug -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_debug -r -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_debug -c -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeCleanCommandLine>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>
+    </NMakeIncludeSearchPath>
+    <PackageFile>.out/simple_gl_app/simple_gl_app.mpk</PackageFile>
+    <IntDir>.out\debug_win_msvc-2017_x64</IntDir>
+    <OutDir>$(ProjectDir)\$(IntDir)</OutDir>
+    <NMakeOutput>$(IntDir)\SimpleGlApp.exe</NMakeOutput>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <!-- following are defaults for debugger options -->
+    <Attach>false</Attach>
+    <MLDownloadOnStart>true</MLDownloadOnStart>
+    <!-- Set this for running with Simulator (ML Remote) -->
+    <LocalDebuggerEnvironment>PATH=$(MLSDK)\VirtualDevice\bin;$(MLSDK)\VirtualDevice\lib;$(MLSDK)\lib\win64</LocalDebuggerEnvironment>
+    <!-- set this for launching Lumin RT examples -->
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)\.out\simple_gl_app</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <MLSDK>C:\Users\jeff\MagicLeap\mlsdk\v0.18.0</MLSDK>
+    <MLCertificateFile>
+    </MLCertificateFile>
+    <MLExtraBuildOption>
+    </MLExtraBuildOption>
+    <MabuTargetFullSpec>release_win_msvc-2017_x64</MabuTargetFullSpec>
+    <ExecutablePath>$(MLSDK);$(PATH)</ExecutablePath>
+    <NMakeBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_release -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_release -r -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>mabu $(MLProjectFile) MLSDK="$(MLSDK)" -t msvc-2017_release -c -v VCDIR="$(VCInstallDir) $(MLExtraBuildOption)</NMakeCleanCommandLine>
+    <NMakePreprocessorDefinitions>
+    </NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>
+    </NMakeIncludeSearchPath>
+    <PackageFile>.out/simple_gl_app/simple_gl_app.mpk</PackageFile>
+    <IntDir>.out\release_win_msvc-2017_x64</IntDir>
+    <OutDir>$(ProjectDir)\$(IntDir)</OutDir>
+    <NMakeOutput>$(IntDir)\SimpleGlApp.exe</NMakeOutput>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <!-- following are defaults for debugger options -->
+    <Attach>false</Attach>
+    <!-- Set this for running with Simulator (ML Remote) -->
+    <LocalDebuggerEnvironment>PATH=$(MLSDK)\VirtualDevice\bin;$(MLSDK)\VirtualDevice\lib;$(MLSDK)\lib\win64</LocalDebuggerEnvironment>
+    <!-- set this for launching Lumin RT examples -->
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)\.out\simple_gl_app</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="load-shader.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="build.bat" />
+    <None Include="build_run.bat" />
+    <None Include="fragment-shader.glsl" />
+    <None Include="glad.comp" />
+    <None Include="glfw.comp" />
+    <None Include="manifest.xml" />
+    <None Include="SimpleGlApp.mabu" />
+    <None Include="vertex-shader.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="simple_gl_app.package" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="load-shader.h" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties MLProjectMabuSyncTime="131876764009909801 (11/26/2018 3:26:40 AM UTC)" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
