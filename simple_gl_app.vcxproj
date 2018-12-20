@@ -215,6 +215,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="build.bat" />
     <None Include="build_run.bat" />
     <None Include="fragment-shader.glsl" />

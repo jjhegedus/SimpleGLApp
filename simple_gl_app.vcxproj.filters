@@ -47,6 +47,9 @@
     <None Include="glad.comp">
       <Filter>Build</Filter>
     </None>
+    <None Include=".gitignore">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="load-shader.h">
