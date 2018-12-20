@@ -26,3 +26,5 @@ USES.win = \
 	glad \
 	glfw
 
+
+INCS =  ../../third-party/glm/

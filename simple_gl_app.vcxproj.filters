@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>bmp;gif;jpg;jpeg;png;wav;mp4</Extensions>
     </Filter>
+    <Filter Include="Build">
+      <UniqueIdentifier>{610f1f75-01d1-4c68-91ca-10c6065178b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -26,15 +29,23 @@
     <None Include="manifest.xml" />
     <None Include="SimpleGlApp.mabu" />
     <None Include="simple_gl_app.package" />
-    <None Include="glad.comp" />
-    <None Include="glfw.comp" />
-    <None Include="build.bat" />
-    <None Include="build_run.bat" />
     <None Include="fragment-shader.glsl">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="vertex-shader.glsl">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="build.bat">
+      <Filter>Build</Filter>
+    </None>
+    <None Include="build_run.bat">
+      <Filter>Build</Filter>
+    </None>
+    <None Include="glfw.comp">
+      <Filter>Build</Filter>
+    </None>
+    <None Include="glad.comp">
+      <Filter>Build</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

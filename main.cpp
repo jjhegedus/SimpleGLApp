@@ -4,6 +4,7 @@
 #include <chrono>
 #include <cmath>
 
+
 #if USE_GLFW
 
 #include <glad/glad.h>
@@ -34,6 +35,12 @@
 #include <ml_logging.h>
 
 #include "load-shader.h"
+
+#include <glm/matrix.hpp>
+#include <glm/vec3.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 // Constants
 const char application_name[] = "com.magicleap.simpleglapp";
@@ -293,6 +300,24 @@ int main() {
   auto start = std::chrono::steady_clock::now();
 
   while (application_context.dummy_value) {
+    float identityMatrixData[16]{
+      .25, 0, 0, 0,
+      0, .25, 0, 0,
+      0, 0, .25, 0,
+      0, 0, 0, 1 };
+    glm::mat4 rotationMatrix = glm::make_mat4(identityMatrixData);
+    int location = glGetUniformLocation(shader_program, "RotationMatrix");
+    if (location >= 0) {
+      if (location == GL_INVALID_VALUE) {
+        ML_LOG(Info, "%s: ConcreteUpdate - Invalid Location", application_name);
+      }
+      ML_LOG(Info, "%s: 1", application_name);
+      glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+      ML_LOG(Info, "%s: 2", application_name);
+      ML_LOG(Info, "%s: 3: location=%d", application_name, location);
+    }
+
+
     MLGraphicsFrameParams frame_params;
 
     MLResult out_result = MLGraphicsInitFrameParams(&frame_params);
