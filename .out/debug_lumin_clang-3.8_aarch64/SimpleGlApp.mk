@@ -1,17 +1,17 @@
 # Generated Makefile -- DO NOT EDIT!
 
-CC=C:/Users/jeff/MagicLeap/mlsdk/v0.18.0/tools/toolchains/bin/aarch64-linux-android-clang
+CC=C:/Users/jeff/MagicLeap/mlsdk/v0.19.0/tools/toolchains/bin/aarch64-linux-android-clang
 COMPILER_PREFIX=
-CXX=C:/Users/jeff/MagicLeap/mlsdk/v0.18.0/tools/toolchains/bin/aarch64-linux-android-clang++
+CXX=C:/Users/jeff/MagicLeap/mlsdk/v0.19.0/tools/toolchains/bin/aarch64-linux-android-clang++
 HOST=win64
 LINKER_PREFIX=
-MLSDK=C:/Users/jeff/MagicLeap/mlsdk/v0.18.0
-OBJCOPY=C:/Users/jeff/MagicLeap/mlsdk/v0.18.0/tools/toolchains/bin/aarch64-linux-android-objcopy.exe
+MLSDK=C:/Users/jeff/MagicLeap/mlsdk/v0.19.0
+OBJCOPY=C:/Users/jeff/MagicLeap/mlsdk/v0.19.0/tools/toolchains/bin/aarch64-linux-android-objcopy.exe
 RM=rm
 SPEC=debug_lumin_clang-3.8_aarch64
-STRIP=C:/Users/jeff/MagicLeap/mlsdk/v0.18.0/tools/toolchains/bin/aarch64-linux-android-strip.exe
-SimpleGlApp_BASE=C:/Projects/Samples/SimpleGlApp
-SimpleGlApp_CPPFLAGS=-I$(MLSDK)/include -DML_DEVICE -DUSE_GLFW=0
+STRIP=C:/Users/jeff/MagicLeap/mlsdk/v0.19.0/tools/toolchains/bin/aarch64-linux-android-strip.exe
+SimpleGlApp_BASE=C:/Projects/IssueReports/SimpleGlApp
+SimpleGlApp_CPPFLAGS=-I$(SimpleGlApp_BASE)/../../third-party/glm/ -I$(MLSDK)/include -DML_DEVICE -DUSE_GLFW=0
 SimpleGlApp_CXXFLAGS=--sysroot=$(MLSDK)/lumin -march=armv8-a -mcpu=cortex-a57+crypto -fPIE -fpic -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -g -fno-limit-debug-info -O0 -nostdinc++ -I$(MLSDK)/lumin/stl/libc++/include -fexceptions -std=c++11 -fdiagnostics-format=msvc
 SimpleGlApp_LDFLAGS=-Wl,-unresolved-symbols=ignore-in-shared-libs --sysroot=$(MLSDK)/lumin -pie -Wl,--gc-sections -Wl,-z,nocopyreloc -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--build-id -no-canonical-prefixes -Wl,--no-undefined -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--enable-new-dtags '-Wl,-rpath=$$ORIGIN' -g -L$(MLSDK)/lumin/stl/libc++/lib
 SimpleGlApp_LIBS=-L$(MLSDK)/lib/lumin -Wl,--no-as-needed -Wl,--start-group -Bdynamic -lc -lc++_shared -landroid_support -lEGL -lGLESv2 -lGLESv3 -lm -lml_graphics -lml_perception_client -lml_input -lml_lifecycle -lml_ext_logging -Wl,--end-group
