@@ -33,6 +33,7 @@
 #include <ml_perception.h>
 #include <ml_lifecycle.h>
 #include <ml_logging.h>
+#include <ml_persistent_coordinate_frames.h>
 
 #include "load-shader.h"
 
@@ -219,6 +220,57 @@ int main() {
     return -1;
   }
 
+
+  MLHandle persistentCoordinateFrameTrackerHandle;
+  MLResult result = MLPersistentCoordinateFrameTrackerCreate(&persistentCoordinateFrameTrackerHandle);
+  if (result == MLResult_PrivilegeDenied) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameTrackerCreate is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+  }
+  else if (result != MLResult_Ok) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameTrackerCreate is %s", application_name, MLGetResultString(result));
+    return -1;
+  }
+
+
+  uint32_t countMLPersistenCoordinateFrames;
+  result = MLPersistentCoordinateFrameGetCount(persistentCoordinateFrameTrackerHandle, &countMLPersistenCoordinateFrames);
+  if (result == MLResult_PrivilegeDenied) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+  }
+  else if (result != MLResult_Ok) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s", application_name, MLGetResultString(result));
+    //return -1;
+  }
+
+
+
+
+  constexpr uint32_t maxCoordinateFrames = 16;
+  constexpr uint32_t bufferSize = maxCoordinateFrames * sizeof(MLCoordinateFrameUID*);
+  MLCoordinateFrameUID* coordinateFrameIds[maxCoordinateFrames];
+
+  result = MLPersistentCoordinateFrameGetAll(persistentCoordinateFrameTrackerHandle, bufferSize, coordinateFrameIds);
+  if (result == MLResult_PrivilegeDenied) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+    return -1;
+  }
+  else if (result != MLResult_Ok) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s", application_name, MLGetResultString(result));
+    //return -1;
+  }
+
+  MLCoordinateFrameUID coordinateFrameId;
+  MLVec3f target{ 0.0f, 0.0f, 0.0f };
+  result = MLPersistentCoordinateFrameGetClosest(persistentCoordinateFrameTrackerHandle, &target, &coordinateFrameId);
+  if (result == MLResult_PrivilegeDenied) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+    return -1;
+  }
+  else if (result != MLResult_Ok) {
+    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s", application_name, MLGetResultString(result));
+    //return -1;
+  }
+
   // Get ready to connect our GL context to the MLSDK graphics API
   graphics_context.makeCurrent();
   glGenFramebuffers(1, &graphics_context.framebuffer_id);
@@ -358,6 +410,17 @@ int main() {
       // ******************   Application Code : Begin ************************//
       ML_LOG(Info, "%s: Begin Application Code", application_name);
 
+
+
+      uint32_t countMLPersistenCoordinateFrames;
+      result = MLPersistentCoordinateFrameGetCount(persistentCoordinateFrameTrackerHandle, &countMLPersistenCoordinateFrames);
+      if (result == MLResult_PrivilegeDenied) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+      }
+      else if (result != MLResult_Ok) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s", application_name, MLGetResultString(result));
+        //return -1;
+      }
 
       glUseProgram(shader_program);
       glBindVertexArray(vao);
