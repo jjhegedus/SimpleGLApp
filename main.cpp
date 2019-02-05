@@ -232,15 +232,15 @@ int main() {
   }
 
 
-  uint32_t countMLPersistenCoordinateFrames;
-  result = MLPersistentCoordinateFrameGetCount(persistentCoordinateFrameTrackerHandle, &countMLPersistenCoordinateFrames);
-  if (result == MLResult_PrivilegeDenied) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s : PrivilegeDenied", application_name, MLGetResultString(result));
-  }
-  else if (result != MLResult_Ok) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s", application_name, MLGetResultString(result));
-    //return -1;
-  }
+  //uint32_t countMLPersistenCoordinateFrames;
+  //result = MLPersistentCoordinateFrameGetCount(persistentCoordinateFrameTrackerHandle, &countMLPersistenCoordinateFrames);
+  //if (result == MLResult_PrivilegeDenied) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+  //}
+  //else if (result != MLResult_Ok) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s", application_name, MLGetResultString(result));
+  //  //return -1;
+  //}
 
 
 
@@ -249,27 +249,27 @@ int main() {
   constexpr uint32_t bufferSize = maxCoordinateFrames * sizeof(MLCoordinateFrameUID*);
   MLCoordinateFrameUID* coordinateFrameIds[maxCoordinateFrames];
 
-  result = MLPersistentCoordinateFrameGetAll(persistentCoordinateFrameTrackerHandle, bufferSize, coordinateFrameIds);
-  if (result == MLResult_PrivilegeDenied) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s : PrivilegeDenied", application_name, MLGetResultString(result));
-    return -1;
-  }
-  else if (result != MLResult_Ok) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s", application_name, MLGetResultString(result));
-    //return -1;
-  }
+  //result = MLPersistentCoordinateFrameGetAll(persistentCoordinateFrameTrackerHandle, bufferSize, coordinateFrameIds);
+  //if (result == MLResult_PrivilegeDenied) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+  //  return -1;
+  //}
+  //else if (result != MLResult_Ok) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s", application_name, MLGetResultString(result));
+  //  //return -1;
+  //}
 
-  MLCoordinateFrameUID coordinateFrameId;
-  MLVec3f target{ 0.0f, 0.0f, 0.0f };
-  result = MLPersistentCoordinateFrameGetClosest(persistentCoordinateFrameTrackerHandle, &target, &coordinateFrameId);
-  if (result == MLResult_PrivilegeDenied) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s : PrivilegeDenied", application_name, MLGetResultString(result));
-    return -1;
-  }
-  else if (result != MLResult_Ok) {
-    ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s", application_name, MLGetResultString(result));
-    //return -1;
-  }
+  //MLCoordinateFrameUID coordinateFrameId;
+  //MLVec3f target{ 0.0f, 0.0f, 0.0f };
+  //result = MLPersistentCoordinateFrameGetClosest(persistentCoordinateFrameTrackerHandle, &target, &coordinateFrameId);
+  //if (result == MLResult_PrivilegeDenied) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+  //  return -1;
+  //}
+  //else if (result != MLResult_Ok) {
+  //  ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s", application_name, MLGetResultString(result));
+  //  //return -1;
+  //}
 
   // Get ready to connect our GL context to the MLSDK graphics API
   graphics_context.makeCurrent();
@@ -376,10 +376,11 @@ int main() {
     if (MLResult_Ok != out_result) {
       ML_LOG(Error, "MLGraphicsInitFrameParams complained: %d", out_result);
     }
-    frame_params.surface_scale = 1.0f;
-    frame_params.projection_type = MLGraphicsProjectionType_ReversedInfiniteZ;
-    frame_params.near_clip = 1.0f;
-    frame_params.focus_distance = 1.0f;
+    // Uncomment the code below to enable ReversedInfiniteZ to support UE4
+    //frame_params.surface_scale = 1.0f;
+    //frame_params.projection_type = MLGraphicsProjectionType_ReversedInfiniteZ;
+    //frame_params.near_clip = 1.0f;
+    //frame_params.focus_distance = 1.0f;
 
     MLHandle frame_handle;
     MLGraphicsVirtualCameraInfoArray virtual_camera_array;
@@ -419,6 +420,28 @@ int main() {
       }
       else if (result != MLResult_Ok) {
         ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetCount is %s", application_name, MLGetResultString(result));
+        //return -1;
+      }
+
+      result = MLPersistentCoordinateFrameGetAll(persistentCoordinateFrameTrackerHandle, bufferSize, coordinateFrameIds);
+      if (result == MLResult_PrivilegeDenied) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+        return -1;
+      }
+      else if (result != MLResult_Ok) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetAll is %s", application_name, MLGetResultString(result));
+        //return -1;
+      }
+
+      MLCoordinateFrameUID coordinateFrameId;
+      MLVec3f target{ 0.0f, 0.0f, 0.0f };
+      result = MLPersistentCoordinateFrameGetClosest(persistentCoordinateFrameTrackerHandle, &target, &coordinateFrameId);
+      if (result == MLResult_PrivilegeDenied) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s : PrivilegeDenied", application_name, MLGetResultString(result));
+        return -1;
+      }
+      else if (result != MLResult_Ok) {
+        ML_LOG(Info, "%s: result of MLPersistentCoordinateFrameGetClosest is %s", application_name, MLGetResultString(result));
         //return -1;
       }
 
